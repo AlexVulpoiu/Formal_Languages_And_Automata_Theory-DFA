@@ -11,7 +11,6 @@ public:
 
 public:
     DFA();
-
     bool evaluate(char word[]);
 };
 
@@ -49,7 +48,6 @@ bool DFA::evaluate(char word[])
 
     nod = q0;
     lg = strlen(word);
-
     for(i = 0; i < lg; i++)
     {
         nod = tranzitie[nod][int(word[i])];
@@ -68,17 +66,14 @@ int main()
     ofstream h("evaluare.out");
 
     DFA aut;
-    int i, N, nrcuv;
+    int i, nrcuv;
     char cuv[10000];
 
     g >> nrcuv;
     g.get();
-    g.get();
     for(i = 0; i < nrcuv; i++)
     {
         g.getline(cuv, 10000);
-        N = strlen(cuv);
-        cuv[N - 1] = '\0';  ///cuvantul are la final caracterele '\n' si '\0', iar instructiunea inlocuieste '\n' cu '\0'
         if(aut.evaluate(cuv))
             h << "Cuvantul '" << cuv << "' este acceptat de automat\n";
         else
